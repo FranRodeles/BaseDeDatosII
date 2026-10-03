@@ -1,0 +1,42 @@
+# Entorno virtual
+.venv/
+venv/
+env/
+ENV/
+*.venv
+
+# Python cache y compilados
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Jupyter Notebook checkpoints & autosave
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+*-checkpoint.ipynb
+
+# IDEs y editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Archivos del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos comprimidos de entrega o descarga masiva que no van en el repo
+dbii.zip
+RodelesFrancisco.zip
+
+# Datasets que superan el límite de 100 MB de GitHub (>100MB bloquea el push)
+# Se mantienen en disco localmente para correr los notebooks, y se proveen sus .zip (<50MB)
+practicas/data/incident_2017.csv
+practicas/data/datasets/database.sqlite
+practicas/data/datasets/mental_disorders_reddit.csv
+practicas/data/datasets/mental_disorders_reddit.csv.zip
+
+# Archivos de bloqueo temporales (LibreOffice / Office)
+.~lock.*#
+

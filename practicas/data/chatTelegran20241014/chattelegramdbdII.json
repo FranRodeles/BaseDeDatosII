@@ -1,0 +1,1697 @@
+{
+ "name": "Diseño Base Datos II - 2024",
+ "type": "private_supergroup",
+ "id": 2246863389,
+ "messages": [
+  {
+   "id": -999962624,
+   "type": "service",
+   "date": "2024-08-12T20:41:19",
+   "date_unixtime": "1723506079",
+   "actor": "Gabriel Arenas 🇦🇷",
+   "actor_id": "user192620519",
+   "action": "create_group",
+   "title": "Diseño Base Datos II - 2024",
+   "members": [
+    "Gabriel Arenas 🇦🇷",
+    "Eliel Mato",
+    "Dolores Herrera",
+    "Santiago Longo",
+    "Facu Merino",
+    "More Segura",
+    "Matias Vilches Bru"
+   ],
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": -999962623,
+   "type": "service",
+   "date": "2024-08-12T20:41:53",
+   "date_unixtime": "1723506113",
+   "actor": "Gabriel Arenas 🇦🇷",
+   "actor_id": "user192620519",
+   "action": "edit_group_photo",
+   "photo": "photos/photo_1@12-08-2024_20-41-53.jpg",
+   "width": 640,
+   "height": 640,
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": -999962622,
+   "type": "service",
+   "date": "2024-08-12T20:43:16",
+   "date_unixtime": "1723506196",
+   "actor": "Gabriel Arenas 🇦🇷",
+   "actor_id": "user192620519",
+   "action": "migrate_to_supergroup",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 1,
+   "type": "service",
+   "date": "2024-08-12T20:43:15",
+   "date_unixtime": "1723506195",
+   "actor": "Diseño Base Datos II - 2024",
+   "actor_id": "channel2246863389",
+   "action": "migrate_from_group",
+   "title": "Diseño Base Datos II - 2024",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 2,
+   "type": "service",
+   "date": "2024-08-12T23:17:55",
+   "date_unixtime": "1723515475",
+   "actor": "Facu Lucero",
+   "actor_id": "user512408504",
+   "action": "join_group_by_link",
+   "inviter": "Group",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 3,
+   "type": "message",
+   "date": "2024-08-19T16:37:12",
+   "date_unixtime": "1724096232",
+   "edited": "2024-08-19T16:41:05",
+   "edited_unixtime": "1724096465",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Hola chicos voy en camino,  me demoro voy en taxi",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Hola chicos voy en camino,  me demoro voy en taxi"
+    }
+   ],
+   "reactions": [
+     {
+      "type": "emoji",
+      "count": 1,
+      "emoji": "👍",
+      "recent": [
+       {
+        "from": "Facu Lucero",
+        "from_id": "user512408504",
+        "date": "2024-08-19T16:41:05"
+       }
+      ]
+     }
+    ]
+  },
+  {
+   "id": 4,
+   "type": "service",
+   "date": "2024-08-19T17:03:08",
+   "date_unixtime": "1724097788",
+   "actor": "Javier Sepúlveda",
+   "actor_id": "user6524309695",
+   "action": "join_group_by_link",
+   "inviter": "Group",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 5,
+   "type": "message",
+   "date": "2024-08-19T17:05:14",
+   "date_unixtime": "1724097914",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Les dejo el select para armar la vista de extracción de datos ETL para la BD sakila",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Les dejo el select para armar la vista de extracción de datos ETL para la BD sakila"
+    }
+   ]
+  },
+  {
+   "id": 6,
+   "type": "message",
+   "date": "2024-08-19T17:05:21",
+   "date_unixtime": "1724097921",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": [
+    "select 'LOCAL' origen_dato,\n       rt.rental_id \"numero_alquiler\",\n       rt.rental_date \"Fecha_renta\",\n       year(rt.rental_date) \"anio_alq\",\n       month(rt.rental_date) \"mes_alq\",\n       monthname(rt.rental_date) \"nmes_alq\",\n       quarter(rt.rental_date) \"trimestre\",\n       rt.inventory_id,\n       (select iv.film_id from inventory iv where iv.inventory_id = rt.inventory_id) \"cod_pelicula\",\n       (select fc.category_id from film_category fc where fc.film_id = (select iv.film_id from inventory iv where iv.inventory_id = rt.inventory_id)) \"cod_categoria\",       \n     ( select ",
+    {
+     "type": "link",
+     "text": "ct.name"
+    },
+    " from category ct where ct.category_id = (select fc.category_id from film_category fc where fc.film_id = (select iv.film_id from inventory iv where iv.inventory_id = rt.inventory_id))) \"categoria\",\n       rt.customer_id,\n       (select ad.city_id from address ad where ad.address_id = (select cm.address_id from customer cm where cm.customer_id = rt.customer_id )) \"codigo_ciudad\",\n       (select ",
+    {
+     "type": "link",
+     "text": "cy.city"
+    },
+    " from city cy where cy.city_id = (select ad.city_id from address ad where ad.address_id = (select cm.address_id from customer cm where cm.customer_id = rt.customer_id ))) \"ciudad\",\n       (select cy.country_id from city cy where cy.city_id = (select ad.city_id from address ad where ad.address_id = (select cm.address_id from customer cm where cm.customer_id = rt.customer_id ))) \"codigo_pais\",\n       (select ",
+    {
+     "type": "link",
+     "text": "cn.country"
+    },
+    " from country cn where cn.country_id = (select cy.country_id from city cy where cy.city_id = (select ad.city_id from address ad where ad.address_id = (select cm.address_id from customer cm where cm.customer_id = rt.customer_id ))) )  \"pais\",\n       rt.return_date,\n       rt.staff_id,\n       (select concat(sf.last_name,' ',sf.first_name) from staff sf where sf.staff_id = rt.staff_id ) \"apeynom_vendedor\",\n       rt.last_update,\n       pm.payment_id,\n       pm.customer_id,\n       pm.staff_id,\n       pm.amount,\n       pm.payment_date,\n       pm.last_update,\n       1 cantidad\n  from rental rt,\n       payment pm\n where rt.rental_id = pm.rental_id;"
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "select 'LOCAL' origen_dato,\n       rt.rental_id \"numero_alquiler\",\n       rt.rental_date \"Fecha_renta\",\n       year(rt.rental_date) \"anio_alq\",\n       month(rt.rental_date) \"mes_alq\",\n       monthname(rt.rental_date) \"nmes_alq\",\n       quarter(rt.rental_date) \"trimestre\",\n       rt.inventory_id,\n       (select iv.film_id from inventory iv where iv.inventory_id = rt.inventory_id) \"cod_pelicula\",\n       (select fc.category_id from film_category fc where fc.film_id = (select iv.film_id from inventory iv where iv.inventory_id = rt.inventory_id)) \"cod_categoria\",       \n     ( select "
+    },
+    {
+     "type": "link",
+     "text": "ct.name"
+    },
+    {
+     "type": "plain",
+     "text": " from category ct where ct.category_id = (select fc.category_id from film_category fc where fc.film_id = (select iv.film_id from inventory iv where iv.inventory_id = rt.inventory_id))) \"categoria\",\n       rt.customer_id,\n       (select ad.city_id from address ad where ad.address_id = (select cm.address_id from customer cm where cm.customer_id = rt.customer_id )) \"codigo_ciudad\",\n       (select "
+    },
+    {
+     "type": "link",
+     "text": "cy.city"
+    },
+    {
+     "type": "plain",
+     "text": " from city cy where cy.city_id = (select ad.city_id from address ad where ad.address_id = (select cm.address_id from customer cm where cm.customer_id = rt.customer_id ))) \"ciudad\",\n       (select cy.country_id from city cy where cy.city_id = (select ad.city_id from address ad where ad.address_id = (select cm.address_id from customer cm where cm.customer_id = rt.customer_id ))) \"codigo_pais\",\n       (select "
+    },
+    {
+     "type": "link",
+     "text": "cn.country"
+    },
+    {
+     "type": "plain",
+     "text": " from country cn where cn.country_id = (select cy.country_id from city cy where cy.city_id = (select ad.city_id from address ad where ad.address_id = (select cm.address_id from customer cm where cm.customer_id = rt.customer_id ))) )  \"pais\",\n       rt.return_date,\n       rt.staff_id,\n       (select concat(sf.last_name,' ',sf.first_name) from staff sf where sf.staff_id = rt.staff_id ) \"apeynom_vendedor\",\n       rt.last_update,\n       pm.payment_id,\n       pm.customer_id,\n       pm.staff_id,\n       pm.amount,\n       pm.payment_date,\n       pm.last_update,\n       1 cantidad\n  from rental rt,\n       payment pm\n where rt.rental_id = pm.rental_id;"
+    }
+   ]
+  },
+  {
+   "id": 7,
+   "type": "message",
+   "date": "2024-08-19T18:15:43",
+   "date_unixtime": "1724102143",
+   "from": "Facu Lucero",
+   "from_id": "user512408504",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "sakila-db.zip",
+   "mime_type": "application/zip",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 8,
+   "type": "message",
+   "date": "2024-08-19T18:34:49",
+   "date_unixtime": "1724103289",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "---------------------------\nTrabajo Práctico N°1\n---------------------------\nEn base a los datos extraídos de sakila a un csv\ngenerar tres (3) pivotes o tablas dinámicas combinando\nlas dimensiones que crean convenientes.\nEn base a cada una de las tablas dinámicas o pivote\ngenerar a su vez tres informes interpretando los datos\nque se presenten.\nO sea,  en total,  deben presentar 9 informes de análisis de datos.\n------------------------------------------------------------------------",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "---------------------------\nTrabajo Práctico N°1\n---------------------------\nEn base a los datos extraídos de sakila a un csv\ngenerar tres (3) pivotes o tablas dinámicas combinando\nlas dimensiones que crean convenientes.\nEn base a cada una de las tablas dinámicas o pivote\ngenerar a su vez tres informes interpretando los datos\nque se presenten.\nO sea,  en total,  deben presentar 9 informes de análisis de datos.\n------------------------------------------------------------------------"
+    }
+   ]
+  },
+  {
+   "id": 9,
+   "type": "message",
+   "date": "2024-08-19T19:05:30",
+   "date_unixtime": "1724105130",
+   "edited": "2024-08-19T19:08:48",
+   "edited_unixtime": "1724105328",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "TP N° 2\n-------------------------------------------------------------\nCon el siguiente dataset de medallas de los Juegos Olímpicos desde (1994-2024)\nRealizar un (1) pivote o tabla dinámica y brindar tres informes en base al mismo.\n-------------------------------------------------------------\nInformación sobre el dataset\n\nEste conjunto de datos proporciona información detallada sobre las medallas otorgadas en los Juegos Olímpicos desde 1994 hasta 2024, cubriendo tanto los Juegos Olímpicos de verano como los de invierno. Sirve como un recurso integral para comprender cómo se han desempeñado los diferentes países durante tres décadas en varios eventos olímpicos. Cada tabla de este conjunto de datos representa el medallero de unos Juegos Olímpicos específicos, organizados por los países participantes. El conjunto de datos incluye información clave como:\n\nCON (Comité Olímpico Nacional): El código que representa al Comité Olímpico Nacional de cada país, que es el responsable de organizar su participación en los Juegos. \n\nMedallas de oro: El número de medallas de oro ganadas por cada país. \n\nMedallas de plata: El número de medallas de plata ganadas por cada país. \n\nMedallas de bronce: El número de medallas de bronce ganadas por cada país. \n\nTotal de medallas: La suma de todas las medallas ganadas por cada país.\n\nLos archivos csv están separados por años y sede.  Se pido armar un solo archivo,  incorporando los datos del año y sede,  al archivo resumen.\n---------------------------------------------------------",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "TP N° 2\n-------------------------------------------------------------\nCon el siguiente dataset de medallas de los Juegos Olímpicos desde (1994-2024)\nRealizar un (1) pivote o tabla dinámica y brindar tres informes en base al mismo.\n-------------------------------------------------------------\nInformación sobre el dataset\n\nEste conjunto de datos proporciona información detallada sobre las medallas otorgadas en los Juegos Olímpicos desde 1994 hasta 2024, cubriendo tanto los Juegos Olímpicos de verano como los de invierno. Sirve como un recurso integral para comprender cómo se han desempeñado los diferentes países durante tres décadas en varios eventos olímpicos. Cada tabla de este conjunto de datos representa el medallero de unos Juegos Olímpicos específicos, organizados por los países participantes. El conjunto de datos incluye información clave como:\n\nCON (Comité Olímpico Nacional): El código que representa al Comité Olímpico Nacional de cada país, que es el responsable de organizar su participación en los Juegos. \n\nMedallas de oro: El número de medallas de oro ganadas por cada país. \n\nMedallas de plata: El número de medallas de plata ganadas por cada país. \n\nMedallas de bronce: El número de medallas de bronce ganadas por cada país. \n\nTotal de medallas: La suma de todas las medallas ganadas por cada país.\n\nLos archivos csv están separados por años y sede.  Se pido armar un solo archivo,  incorporando los datos del año y sede,  al archivo resumen.\n---------------------------------------------------------"
+    }
+   ]
+  },
+  {
+   "id": 10,
+   "type": "message",
+   "date": "2024-08-19T19:06:19",
+   "date_unixtime": "1724105179",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "olimpiadas.zip",
+   "mime_type": "application/zip",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 11,
+   "type": "message",
+   "date": "2024-08-21T21:44:50",
+   "date_unixtime": "1724287490",
+   "edited": "2024-08-22T07:38:40",
+   "edited_unixtime": "1724323120",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": [
+    "¿Cómo visualizar millones de datos en tiempo real en segundos?\n\n",
+    {
+     "type": "link",
+     "text": "https://youtu.be/e11jyqQDTpA?si=siOeT8IAu_6__u8J"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "¿Cómo visualizar millones de datos en tiempo real en segundos?\n\n"
+    },
+    {
+     "type": "link",
+     "text": "https://youtu.be/e11jyqQDTpA?si=siOeT8IAu_6__u8J"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ],
+   "reactions": [
+     {
+      "type": "emoji",
+      "count": 2,
+      "emoji": "👍",
+      "recent": [
+       {
+        "from": "Matias Vilches Bru",
+        "from_id": "user1214952617",
+        "date": "2024-08-23T08:03:01"
+       },
+       {
+        "from": "Facu Lucero",
+        "from_id": "user512408504",
+        "date": "2024-08-22T07:38:40"
+       }
+      ]
+     }
+    ]
+  },
+  {
+   "id": 13,
+   "type": "message",
+   "date": "2024-08-26T10:27:05",
+   "date_unixtime": "1724678825",
+   "edited": "2024-08-26T10:29:13",
+   "edited_unixtime": "1724678953",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Hola chicos,  buenos días,  esta tarde nos reunimos por meet,  me tronché la rodilla haciendo un esfuerzo y casi no puedo caminar.\n\nPor favor vayan pasando los prácticos y si tienen dudas,  lo vemos esta tarde.\n\nLes paso link por acá,  cerca de 16:30 hs",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Hola chicos,  buenos días,  esta tarde nos reunimos por meet,  me tronché la rodilla haciendo un esfuerzo y casi no puedo caminar.\n\nPor favor vayan pasando los prácticos y si tienen dudas,  lo vemos esta tarde.\n\nLes paso link por acá,  cerca de 16:30 hs"
+    }
+   ],
+   "reactions": [
+     {
+      "type": "emoji",
+      "count": 1,
+      "emoji": "👍",
+      "recent": [
+       {
+        "from": "Facu Lucero",
+        "from_id": "user512408504",
+        "date": "2024-08-26T10:29:13"
+       }
+      ]
+     }
+    ]
+  },
+  {
+   "id": 14,
+   "type": "message",
+   "date": "2024-08-26T10:27:57",
+   "date_unixtime": "1724678877",
+   "edited": "2024-08-26T11:15:21",
+   "edited_unixtime": "1724681721",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Por favor, difundan en sus grupos internos así están todos informados",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Por favor, difundan en sus grupos internos así están todos informados"
+    }
+   ],
+   "reactions": [
+     {
+      "type": "emoji",
+      "count": 1,
+      "emoji": "🤝",
+      "recent": [
+       {
+        "from": "Facu Lucero",
+        "from_id": "user512408504",
+        "date": "2024-08-26T11:15:21"
+       }
+      ]
+     }
+    ]
+  },
+  {
+   "id": 15,
+   "type": "message",
+   "date": "2024-08-26T14:59:08",
+   "date_unixtime": "1724695148",
+   "from": "Matias Vilches Bru",
+   "from_id": "user1214952617",
+   "reply_to_message_id": 13,
+   "text": "👍🏻",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "👍🏻"
+    }
+   ]
+  },
+  {
+   "id": 16,
+   "type": "message",
+   "date": "2024-08-26T16:09:10",
+   "date_unixtime": "1724699350",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Chicos arrancamos el meet 17 hs",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Chicos arrancamos el meet 17 hs"
+    }
+   ]
+  },
+  {
+   "id": 17,
+   "type": "service",
+   "date": "2024-08-26T16:39:50",
+   "date_unixtime": "1724701190",
+   "actor": "Facu Mendez",
+   "actor_id": "user6353293458",
+   "action": "join_group_by_link",
+   "inviter": "Group",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 18,
+   "type": "message",
+   "date": "2024-08-26T17:03:41",
+   "date_unixtime": "1724702621",
+   "edited": "2024-08-26T17:05:29",
+   "edited_unixtime": "1724702729",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "empezamos 17:30 disculpen",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "empezamos 17:30 disculpen"
+    }
+   ],
+   "reactions": [
+     {
+      "type": "emoji",
+      "count": 2,
+      "emoji": "👍",
+      "recent": [
+       {
+        "from": "Matias Vilches Bru",
+        "from_id": "user1214952617",
+        "date": "2024-08-26T17:08:14"
+       },
+       {
+        "from": "Facu Lucero",
+        "from_id": "user512408504",
+        "date": "2024-08-26T17:05:29"
+       }
+      ]
+     }
+    ]
+  },
+  {
+   "id": 19,
+   "type": "message",
+   "date": "2024-08-26T17:03:47",
+   "date_unixtime": "1724702627",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": [
+    "Clase DB Datos II 26-08-24\nLunes, 26 de agosto · 17:30 – 20:30\nZona horaria: America/Argentina/Buenos_Aires\nInformación para unirse con Google Meet\nEnlace de la videollamada: ",
+    {
+     "type": "link",
+     "text": "https://meet.google.com/dfe-daci-wvh"
+    },
+    "\nO marca el:  (US) +1 ",
+    {
+     "type": "phone",
+     "text": "573-609-8583"
+    },
+    "  PIN:  531 777 336 #"
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Clase DB Datos II 26-08-24\nLunes, 26 de agosto · 17:30 – 20:30\nZona horaria: America/Argentina/Buenos_Aires\nInformación para unirse con Google Meet\nEnlace de la videollamada: "
+    },
+    {
+     "type": "link",
+     "text": "https://meet.google.com/dfe-daci-wvh"
+    },
+    {
+     "type": "plain",
+     "text": "\nO marca el:  (US) +1 "
+    },
+    {
+     "type": "phone",
+     "text": "573-609-8583"
+    },
+    {
+     "type": "plain",
+     "text": "  PIN:  531 777 336 #"
+    }
+   ]
+  },
+  {
+   "id": 20,
+   "type": "message",
+   "date": "2024-08-26T17:26:15",
+   "date_unixtime": "1724703975",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": [
+    {
+     "type": "link",
+     "text": "https://www.youtube.com/watch?v=KiOAgqqhnnA"
+    }
+   ],
+   "text_entities": [
+    {
+     "type": "link",
+     "text": "https://www.youtube.com/watch?v=KiOAgqqhnnA"
+    }
+   ]
+  },
+  {
+   "id": 21,
+   "type": "message",
+   "date": "2024-08-26T17:30:16",
+   "date_unixtime": "1724704216",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Empezamos?",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Empezamos?"
+    }
+   ]
+  },
+  {
+   "id": 22,
+   "type": "message",
+   "date": "2024-08-26T17:30:22",
+   "date_unixtime": "1724704222",
+   "from": "Matias Vilches Bru",
+   "from_id": "user1214952617",
+   "text": "Ahí entro profe!!!",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Ahí entro profe!!!"
+    }
+   ]
+  },
+  {
+   "id": 23,
+   "type": "message",
+   "date": "2024-08-26T17:33:50",
+   "date_unixtime": "1724704430",
+   "from": "Facu Lucero",
+   "from_id": "user512408504",
+   "text": "Estoy",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Estoy"
+    }
+   ]
+  },
+  {
+   "id": 24,
+   "type": "message",
+   "date": "2024-08-26T19:26:16",
+   "date_unixtime": "1724711176",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": [
+    {
+     "type": "link",
+     "text": "https://www.youtube.com/watch?v=Oanr41Tz28U"
+    }
+   ],
+   "text_entities": [
+    {
+     "type": "link",
+     "text": "https://www.youtube.com/watch?v=Oanr41Tz28U"
+    }
+   ]
+  },
+  {
+   "id": 25,
+   "type": "message",
+   "date": "2024-08-26T19:26:44",
+   "date_unixtime": "1724711204",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Otra explicación para dashboard interactivo con mapa",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Otra explicación para dashboard interactivo con mapa"
+    }
+   ]
+  },
+  {
+   "id": 26,
+   "type": "message",
+   "date": "2024-08-27T01:13:34",
+   "date_unixtime": "1724732014",
+   "from": "Facu Lucero",
+   "from_id": "user512408504",
+   "text": "Buenas noches! Después de probar 3 versiones, logré instalar y activar Office 365.\nSeguí un tutorial de instalación (Office original)\nY otro de Activación por Powershell de Windows.",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Buenas noches! Después de probar 3 versiones, logré instalar y activar Office 365.\nSeguí un tutorial de instalación (Office original)\nY otro de Activación por Powershell de Windows."
+    }
+   ]
+  },
+  {
+   "id": 27,
+   "type": "message",
+   "date": "2024-08-27T01:13:39",
+   "date_unixtime": "1724732019",
+   "from": "Facu Lucero",
+   "from_id": "user512408504",
+   "text": "Video de Instalación:",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Video de Instalación:"
+    }
+   ]
+  },
+  {
+   "id": 28,
+   "type": "message",
+   "date": "2024-08-27T01:13:50",
+   "date_unixtime": "1724732030",
+   "from": "Facu Lucero",
+   "from_id": "user512408504",
+   "text": [
+    {
+     "type": "link",
+     "text": "https://www.youtube.com/watch?v=CyQvlmQux6Y"
+    }
+   ],
+   "text_entities": [
+    {
+     "type": "link",
+     "text": "https://www.youtube.com/watch?v=CyQvlmQux6Y"
+    }
+   ]
+  },
+  {
+   "id": 29,
+   "type": "message",
+   "date": "2024-08-27T01:14:01",
+   "date_unixtime": "1724732041",
+   "from": "Facu Lucero",
+   "from_id": "user512408504",
+   "text": "Video de Activación:",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Video de Activación:"
+    }
+   ]
+  },
+  {
+   "id": 30,
+   "type": "message",
+   "date": "2024-08-27T01:14:15",
+   "date_unixtime": "1724732055",
+   "from": "Facu Lucero",
+   "from_id": "user512408504",
+   "text": [
+    {
+     "type": "link",
+     "text": "https://www.youtube.com/watch?v=IrglwFT5Dlw"
+    }
+   ],
+   "text_entities": [
+    {
+     "type": "link",
+     "text": "https://www.youtube.com/watch?v=IrglwFT5Dlw"
+    }
+   ]
+  },
+  {
+   "id": 31,
+   "type": "message",
+   "date": "2024-08-27T09:34:00",
+   "date_unixtime": "1724762040",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Gracias Facundo",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Gracias Facundo"
+    }
+   ]
+  },
+  {
+   "id": 32,
+   "type": "message",
+   "date": "2024-09-02T12:34:10",
+   "date_unixtime": "1725291250",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Buenos días chicos,  viendo las condiciones del tiempo,  les propongo que hagamos en forma virtual la clase de hoy,  por favor me confirman que pueden",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Buenos días chicos,  viendo las condiciones del tiempo,  les propongo que hagamos en forma virtual la clase de hoy,  por favor me confirman que pueden"
+    }
+   ]
+  },
+  {
+   "id": 33,
+   "type": "message",
+   "date": "2024-09-02T12:34:42",
+   "date_unixtime": "1725291282",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "He tenido cortada la electricidad hasta hace unos minutos",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "He tenido cortada la electricidad hasta hace unos minutos"
+    }
+   ]
+  },
+  {
+   "id": 34,
+   "type": "message",
+   "date": "2024-09-02T12:37:05",
+   "date_unixtime": "1725291425",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Hoy vamos a hacer más práctica con excel",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Hoy vamos a hacer más práctica con excel"
+    }
+   ]
+  },
+  {
+   "id": 35,
+   "type": "message",
+   "date": "2024-09-02T13:14:03",
+   "date_unixtime": "1725293643",
+   "from": "Facu Merino",
+   "from_id": "user1445938666",
+   "text": "Hola profe, dale no hay problema",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Hola profe, dale no hay problema"
+    }
+   ]
+  },
+  {
+   "id": 36,
+   "type": "message",
+   "date": "2024-09-02T13:32:53",
+   "date_unixtime": "1725294773",
+   "from": "Eliel Mato",
+   "from_id": "user6129948270",
+   "text": "Buenas profe. Dale no hay drama",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Buenas profe. Dale no hay drama"
+    }
+   ]
+  },
+  {
+   "id": 37,
+   "type": "message",
+   "date": "2024-09-02T13:33:25",
+   "date_unixtime": "1725294805",
+   "from": "Facu Lucero",
+   "from_id": "user512408504",
+   "text": "Buen día! Perfecto!",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Buen día! Perfecto!"
+    }
+   ]
+  },
+  {
+   "id": 38,
+   "type": "message",
+   "date": "2024-09-02T16:13:16",
+   "date_unixtime": "1725304396",
+   "edited": "2024-09-02T16:30:00",
+   "edited_unixtime": "1725305400",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Chicos,  paso link de meet cerca de las 17:30 hs",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Chicos,  paso link de meet cerca de las 17:30 hs"
+    }
+   ],
+   "reactions": [
+     {
+      "type": "emoji",
+      "count": 1,
+      "emoji": "👍",
+      "recent": [
+       {
+        "from": "Facu Lucero",
+        "from_id": "user512408504",
+        "date": "2024-09-02T16:30:00"
+       }
+      ]
+     }
+    ]
+  },
+  {
+   "id": 39,
+   "type": "message",
+   "date": "2024-09-02T17:27:52",
+   "date_unixtime": "1725308872",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": [
+    "Diseño BD II clase 02-09-24\nLunes, 2 de septiembre · 17:30 – 20:30\nZona horaria: America/Argentina/Buenos_Aires\nInformación para unirse con Google Meet\nEnlace de la videollamada: ",
+    {
+     "type": "link",
+     "text": "https://meet.google.com/dbh-shdd-dac"
+    },
+    "\nO marca el:  (US) +1 ",
+    {
+     "type": "phone",
+     "text": "516-226-0176"
+    },
+    "  PIN:  335 843 867 ",
+    {
+     "type": "hashtag",
+     "text": "#INSERT"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Diseño BD II clase 02-09-24\nLunes, 2 de septiembre · 17:30 – 20:30\nZona horaria: America/Argentina/Buenos_Aires\nInformación para unirse con Google Meet\nEnlace de la videollamada: "
+    },
+    {
+     "type": "link",
+     "text": "https://meet.google.com/dbh-shdd-dac"
+    },
+    {
+     "type": "plain",
+     "text": "\nO marca el:  (US) +1 "
+    },
+    {
+     "type": "phone",
+     "text": "516-226-0176"
+    },
+    {
+     "type": "plain",
+     "text": "  PIN:  335 843 867 "
+    },
+    {
+     "type": "hashtag",
+     "text": "#INSERT"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 40,
+   "type": "message",
+   "date": "2024-09-02T17:28:44",
+   "date_unixtime": "1725308924",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "globalEVSales.zip",
+   "mime_type": "application/zip",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 41,
+   "type": "message",
+   "date": "2024-09-02T17:29:18",
+   "date_unixtime": "1725308958",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "redwineQuality.zip",
+   "mime_type": "application/zip",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 42,
+   "type": "message",
+   "date": "2024-09-02T17:30:19",
+   "date_unixtime": "1725309019",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "olist-brasil-ecomerce.zip",
+   "mime_type": "application/zip",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 43,
+   "type": "message",
+   "date": "2024-09-02T17:34:29",
+   "date_unixtime": "1725309269",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Arrancamos?",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Arrancamos?"
+    }
+   ]
+  },
+  {
+   "id": 44,
+   "type": "message",
+   "date": "2024-09-02T17:50:55",
+   "date_unixtime": "1725310255",
+   "from": "Facu Mendez",
+   "from_id": "user6353293458",
+   "text": "Buenas tardes profe podria aceptar la solicitud para unirme al zoom",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Buenas tardes profe podria aceptar la solicitud para unirme al zoom"
+    }
+   ]
+  },
+  {
+   "id": 45,
+   "type": "message",
+   "date": "2024-09-09T17:08:47",
+   "date_unixtime": "1725912527",
+   "edited": "2024-09-09T17:09:21",
+   "edited_unixtime": "1725912561",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": [
+    {
+     "type": "link",
+     "text": "https://gitlab.com/andrea.navarro/base-de-datos-ii"
+    }
+   ],
+   "text_entities": [
+    {
+     "type": "link",
+     "text": "https://gitlab.com/andrea.navarro/base-de-datos-ii"
+    }
+   ],
+   "reactions": [
+     {
+      "type": "emoji",
+      "count": 1,
+      "emoji": "❤",
+      "recent": [
+       {
+        "from": "Facu Lucero",
+        "from_id": "user512408504",
+        "date": "2024-09-09T17:09:21"
+       }
+      ]
+     }
+    ]
+  },
+  {
+   "id": 46,
+   "type": "message",
+   "date": "2024-09-09T17:11:12",
+   "date_unixtime": "1725912672",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "DataMining.pdf",
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 47,
+   "type": "message",
+   "date": "2024-09-09T17:11:50",
+   "date_unixtime": "1725912710",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "mastering-data-mining-with-python.pdf",
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 48,
+   "type": "message",
+   "date": "2024-09-09T17:12:45",
+   "date_unixtime": "1725912765",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "pandas.pdf",
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 49,
+   "type": "message",
+   "date": "2024-09-09T17:12:55",
+   "date_unixtime": "1725912775",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "matplotlib.pdf",
+   "thumbnail": "(File not included. Change data exporting settings to download.)",
+   "mime_type": "application/pdf",
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 50,
+   "type": "message",
+   "date": "2024-09-10T11:42:54",
+   "date_unixtime": "1725979374",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Chicos los invito a esta presentación de la Open Week",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Chicos los invito a esta presentación de la Open Week"
+    }
+   ]
+  },
+  {
+   "id": 51,
+   "type": "message",
+   "date": "2024-09-10T11:42:54",
+   "date_unixtime": "1725979374",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "photo": "photos/photo_2@10-09-2024_11-42-54.jpg",
+   "width": 720,
+   "height": 1280,
+   "text": "",
+   "text_entities": []
+  },
+  {
+   "id": 52,
+   "type": "message",
+   "date": "2024-09-10T12:04:47",
+   "date_unixtime": "1725980687",
+   "from": "Facu Lucero",
+   "from_id": "user512408504",
+   "text": "Excelente profe! Ahí vamos a estar hoy.",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Excelente profe! Ahí vamos a estar hoy."
+    }
+   ]
+  },
+  {
+   "id": 53,
+   "type": "message",
+   "date": "2024-09-11T12:22:04",
+   "date_unixtime": "1726068124",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": [
+    {
+     "type": "link",
+     "text": "https://um.edu.ar/wp-content/uploads/UM-OPEN-WEEK-Ingenieria-Informatica-Muro-04-1.png"
+    },
+    "\n\nHoy a partir de las 19 hs,  estamos invitados"
+   ],
+   "text_entities": [
+    {
+     "type": "link",
+     "text": "https://um.edu.ar/wp-content/uploads/UM-OPEN-WEEK-Ingenieria-Informatica-Muro-04-1.png"
+    },
+    {
+     "type": "plain",
+     "text": "\n\nHoy a partir de las 19 hs,  estamos invitados"
+    }
+   ]
+  },
+  {
+   "id": 54,
+   "type": "message",
+   "date": "2024-09-17T11:27:59",
+   "date_unixtime": "1726583279",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": [
+    {
+     "type": "link",
+     "text": "https://github.com/jpjacobpadilla/Stealth-Requests"
+    }
+   ],
+   "text_entities": [
+    {
+     "type": "link",
+     "text": "https://github.com/jpjacobpadilla/Stealth-Requests"
+    }
+   ]
+  },
+  {
+   "id": 55,
+   "type": "message",
+   "date": "2024-09-17T11:51:36",
+   "date_unixtime": "1726584696",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": [
+    {
+     "type": "link",
+     "text": "https://github.com/fbdesignpro/sweetviz"
+    }
+   ],
+   "text_entities": [
+    {
+     "type": "link",
+     "text": "https://github.com/fbdesignpro/sweetviz"
+    }
+   ]
+  },
+  {
+   "id": 56,
+   "type": "message",
+   "date": "2024-09-23T11:16:24",
+   "date_unixtime": "1727100984",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Buenos días chicos,  podemos hacer virtual hoy,  a partir de las 17 hs,  llevo a las 15 hs a mi esposa al médico y estimo me desocupo a esa hora.",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Buenos días chicos,  podemos hacer virtual hoy,  a partir de las 17 hs,  llevo a las 15 hs a mi esposa al médico y estimo me desocupo a esa hora."
+    }
+   ]
+  },
+  {
+   "id": 57,
+   "type": "message",
+   "date": "2024-09-23T12:04:37",
+   "date_unixtime": "1727103877",
+   "from": "Facu Lucero",
+   "from_id": "user512408504",
+   "text": "Buen día! Perfecto profe.",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Buen día! Perfecto profe."
+    }
+   ]
+  },
+  {
+   "id": 58,
+   "type": "message",
+   "date": "2024-09-23T17:03:32",
+   "date_unixtime": "1727121812",
+   "edited": "2024-09-23T17:18:23",
+   "edited_unixtime": "1727122703",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Chicos arrancamos en media hora,  recién salgo del médico",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Chicos arrancamos en media hora,  recién salgo del médico"
+    }
+   ],
+   "reactions": [
+     {
+      "type": "emoji",
+      "count": 1,
+      "emoji": "👍",
+      "recent": [
+       {
+        "from": "Facu Lucero",
+        "from_id": "user512408504",
+        "date": "2024-09-23T17:18:23"
+       }
+      ]
+     }
+    ]
+  },
+  {
+   "id": 59,
+   "type": "message",
+   "date": "2024-09-23T17:28:16",
+   "date_unixtime": "1727123296",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Les dejo material para el acceso a las APIs",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Les dejo material para el acceso a las APIs"
+    }
+   ]
+  },
+  {
+   "id": 60,
+   "type": "message",
+   "date": "2024-09-23T17:28:25",
+   "date_unixtime": "1727123305",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": [
+    {
+     "type": "link",
+     "text": "https://www.datacamp.com/tutorial/making-http-requests-in-python"
+    }
+   ],
+   "text_entities": [
+    {
+     "type": "link",
+     "text": "https://www.datacamp.com/tutorial/making-http-requests-in-python"
+    }
+   ]
+  },
+  {
+   "id": 61,
+   "type": "message",
+   "date": "2024-09-23T17:31:52",
+   "date_unixtime": "1727123512",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Link para el meet",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Link para el meet"
+    }
+   ]
+  },
+  {
+   "id": 62,
+   "type": "message",
+   "date": "2024-09-23T17:31:59",
+   "date_unixtime": "1727123519",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": [
+    "clase DBD II 23-09-2024\nLunes, 23 de septiembre · 17:45 – 20:15\nZona horaria: America/Argentina/Buenos_Aires\nInformación para unirse con Google Meet\nEnlace de la videollamada: ",
+    {
+     "type": "link",
+     "text": "https://meet.google.com/mrg-caob-srw"
+    },
+    "\nO marca el:  (US) +1 ",
+    {
+     "type": "phone",
+     "text": "402-381-3232"
+    },
+    "  PIN:  742 578 736 ",
+    {
+     "type": "hashtag",
+     "text": "#OSINT"
+    },
+    ""
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "clase DBD II 23-09-2024\nLunes, 23 de septiembre · 17:45 – 20:15\nZona horaria: America/Argentina/Buenos_Aires\nInformación para unirse con Google Meet\nEnlace de la videollamada: "
+    },
+    {
+     "type": "link",
+     "text": "https://meet.google.com/mrg-caob-srw"
+    },
+    {
+     "type": "plain",
+     "text": "\nO marca el:  (US) +1 "
+    },
+    {
+     "type": "phone",
+     "text": "402-381-3232"
+    },
+    {
+     "type": "plain",
+     "text": "  PIN:  742 578 736 "
+    },
+    {
+     "type": "hashtag",
+     "text": "#OSINT"
+    },
+    {
+     "type": "plain",
+     "text": ""
+    }
+   ]
+  },
+  {
+   "id": 63,
+   "type": "message",
+   "date": "2024-09-23T17:49:44",
+   "date_unixtime": "1727124584",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Ya estamos",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Ya estamos"
+    }
+   ]
+  },
+  {
+   "id": 64,
+   "type": "message",
+   "date": "2024-09-23T18:00:24",
+   "date_unixtime": "1727125224",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "tables = pd.read_html(url,header=0, index_col=0,encoding='ISO-8859-1')",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "tables = pd.read_html(url,header=0, index_col=0,encoding='ISO-8859-1')"
+    }
+   ]
+  },
+  {
+   "id": 65,
+   "type": "message",
+   "date": "2024-09-23T20:45:43",
+   "date_unixtime": "1727135143",
+   "edited": "2024-09-23T20:46:14",
+   "edited_unixtime": "1727135174",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "file": "(File not included. Change data exporting settings to download.)",
+   "file_name": "TP2.ipynb",
+   "mime_type": "application/x-ipynb+json",
+   "text": "les dejo el TP2 con el ejercicio 1 planteado",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "les dejo el TP2 con el ejercicio 1 planteado"
+    }
+   ],
+   "reactions": [
+     {
+      "type": "emoji",
+      "count": 1,
+      "emoji": "❤",
+      "recent": [
+       {
+        "from": "Facu Lucero",
+        "from_id": "user512408504",
+        "date": "2024-09-23T20:46:14"
+       }
+      ]
+     }
+    ]
+  },
+  {
+   "id": 66,
+   "type": "message",
+   "date": "2024-09-30T12:23:15",
+   "date_unixtime": "1727709795",
+   "edited": "2024-09-30T12:23:27",
+   "edited_unixtime": "1727709807",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Hola chicos buenos días,  a fin de evitar movernos con este viento,  hacemos virtual esta tarde a partir de 17 hs",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Hola chicos buenos días,  a fin de evitar movernos con este viento,  hacemos virtual esta tarde a partir de 17 hs"
+    }
+   ]
+  },
+  {
+   "id": 67,
+   "type": "message",
+   "date": "2024-09-30T12:52:37",
+   "date_unixtime": "1727711557",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "photo": "photos/photo_3@30-09-2024_12-52-37.jpg",
+   "width": 1280,
+   "height": 1280,
+   "text": "Foto de Gabriel Arenas",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Foto de Gabriel Arenas"
+    }
+   ]
+  },
+  {
+   "id": 68,
+   "type": "message",
+   "date": "2024-09-30T13:11:50",
+   "date_unixtime": "1727712710",
+   "from": "Facu Lucero",
+   "from_id": "user512408504",
+   "text": "Okay profe!",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Okay profe!"
+    }
+   ]
+  },
+  {
+   "id": 69,
+   "type": "message",
+   "date": "2024-09-30T16:54:11",
+   "date_unixtime": "1727726051",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Paso link del meet",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Paso link del meet"
+    }
+   ]
+  },
+  {
+   "id": 70,
+   "type": "message",
+   "date": "2024-09-30T16:54:16",
+   "date_unixtime": "1727726056",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": [
+    "DBD II - 30/09/2024\nLunes, 30 de septiembre · 17:00 – 20:00\nZona horaria: America/Argentina/Buenos_Aires\nInformación para unirse con Google Meet\nEnlace de la videollamada: ",
+    {
+     "type": "link",
+     "text": "https://meet.google.com/sfs-uwfb-duh"
+    },
+    "\nO marca el:  (US) +1 ",
+    {
+     "type": "phone",
+     "text": "347-227-1742"
+    },
+    "  PIN:  124 589 056 #"
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "DBD II - 30/09/2024\nLunes, 30 de septiembre · 17:00 – 20:00\nZona horaria: America/Argentina/Buenos_Aires\nInformación para unirse con Google Meet\nEnlace de la videollamada: "
+    },
+    {
+     "type": "link",
+     "text": "https://meet.google.com/sfs-uwfb-duh"
+    },
+    {
+     "type": "plain",
+     "text": "\nO marca el:  (US) +1 "
+    },
+    {
+     "type": "phone",
+     "text": "347-227-1742"
+    },
+    {
+     "type": "plain",
+     "text": "  PIN:  124 589 056 #"
+    }
+   ]
+  },
+  {
+   "id": 71,
+   "type": "message",
+   "date": "2024-09-30T17:03:47",
+   "date_unixtime": "1727726627",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Chicos estamos para empezar?",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Chicos estamos para empezar?"
+    }
+   ]
+  },
+  {
+   "id": 72,
+   "type": "message",
+   "date": "2024-09-30T17:05:06",
+   "date_unixtime": "1727726706",
+   "from": "Facu Lucero",
+   "from_id": "user512408504",
+   "text": "Ahí entro profe!",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Ahí entro profe!"
+    }
+   ]
+  },
+  {
+   "id": 73,
+   "type": "message",
+   "date": "2024-09-30T20:14:15",
+   "date_unixtime": "1727738055",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "chicos para corregir en encoding,  utilizar dtype=int",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "chicos para corregir en encoding,  utilizar dtype=int"
+    }
+   ]
+  },
+  {
+   "id": 74,
+   "type": "message",
+   "date": "2024-09-30T20:14:25",
+   "date_unixtime": "1727738065",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "debe quedar así",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "debe quedar así"
+    }
+   ]
+  },
+  {
+   "id": 75,
+   "type": "message",
+   "date": "2024-09-30T20:14:28",
+   "date_unixtime": "1727738068",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "dummy_color = pd.get_dummies(df['color'], prefix='color', dtype=int)",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "dummy_color = pd.get_dummies(df['color'], prefix='color', dtype=int)"
+    }
+   ]
+  },
+  {
+   "id": 76,
+   "type": "message",
+   "date": "2024-09-30T20:15:34",
+   "date_unixtime": "1727738134",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "con eso,  en vez de codificar en true y false,  lo convierte a 1 y 0",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "con eso,  en vez de codificar en true y false,  lo convierte a 1 y 0"
+    }
+   ]
+  },
+  {
+   "id": 77,
+   "type": "message",
+   "date": "2024-10-07T09:39:13",
+   "date_unixtime": "1728304753",
+   "edited": "2024-10-07T11:56:04",
+   "edited_unixtime": "1728312964",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Buenos días estimados alumnos,   esta tarde nos reunimos vía meet,  estoy pasando por un estado gripal,  con dolor de cabeza y garganta.\nEsta tarde cerca de 17 hs les paso el link.",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Buenos días estimados alumnos,   esta tarde nos reunimos vía meet,  estoy pasando por un estado gripal,  con dolor de cabeza y garganta.\nEsta tarde cerca de 17 hs les paso el link."
+    }
+   ],
+   "reactions": [
+     {
+      "type": "emoji",
+      "count": 2,
+      "emoji": "👍",
+      "recent": [
+       {
+        "from": "Facu Mendez",
+        "from_id": "user6353293458",
+        "date": "2024-10-14T13:03:34"
+       },
+       {
+        "from": "Facu Lucero",
+        "from_id": "user512408504",
+        "date": "2024-10-07T11:56:04"
+       }
+      ]
+     }
+    ]
+  },
+  {
+   "id": 78,
+   "type": "message",
+   "date": "2024-10-07T11:17:00",
+   "date_unixtime": "1728310620",
+   "from": "Facu Merino",
+   "from_id": "user1445938666",
+   "text": "Dale profe no hay problema",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Dale profe no hay problema"
+    }
+   ]
+  },
+  {
+   "id": 79,
+   "type": "message",
+   "date": "2024-10-07T16:55:00",
+   "date_unixtime": "1728330900",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Chicos arrancamos 17:15 paso link",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Chicos arrancamos 17:15 paso link"
+    }
+   ]
+  },
+  {
+   "id": 80,
+   "type": "message",
+   "date": "2024-10-07T16:55:10",
+   "date_unixtime": "1728330910",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": [
+    "Clase DBD II 07-10-2024\nLunes, 7 de octubre · 17:15 – 20:15\nZona horaria: America/Argentina/Buenos_Aires\nInformación para unirse con Google Meet\nEnlace de la videollamada: ",
+    {
+     "type": "link",
+     "text": "https://meet.google.com/nyt-oicc-aff"
+    },
+    "\nO marca el:  (US) +1 ",
+    {
+     "type": "phone",
+     "text": "405-561-2869"
+    },
+    "  PIN:  190 305 121 #"
+   ],
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Clase DBD II 07-10-2024\nLunes, 7 de octubre · 17:15 – 20:15\nZona horaria: America/Argentina/Buenos_Aires\nInformación para unirse con Google Meet\nEnlace de la videollamada: "
+    },
+    {
+     "type": "link",
+     "text": "https://meet.google.com/nyt-oicc-aff"
+    },
+    {
+     "type": "plain",
+     "text": "\nO marca el:  (US) +1 "
+    },
+    {
+     "type": "phone",
+     "text": "405-561-2869"
+    },
+    {
+     "type": "plain",
+     "text": "  PIN:  190 305 121 #"
+    }
+   ]
+  },
+  {
+   "id": 81,
+   "type": "message",
+   "date": "2024-10-14T15:59:13",
+   "date_unixtime": "1728932353",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Hola chicos,  16:30 nos vemos en la facu",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Hola chicos,  16:30 nos vemos en la facu"
+    }
+   ]
+  },
+  {
+   "id": 82,
+   "type": "message",
+   "date": "2024-10-14T17:00:06",
+   "date_unixtime": "1728936006",
+   "from": "Gabriel Arenas 🇦🇷",
+   "from_id": "user192620519",
+   "text": "Recién llega el taxi",
+   "text_entities": [
+    {
+     "type": "plain",
+     "text": "Recién llega el taxi"
+    }
+   ]
+  }
+ ]
+}
